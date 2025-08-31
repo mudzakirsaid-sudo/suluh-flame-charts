@@ -129,20 +129,22 @@ export default function SuluhCharts() {
               </p>
             </div>
 
-            {/* Charts Grid */}
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
-              <Chart3D 
-                data={willingnessData} 
-                title="Willingness to Use SULUH"
-              />
-              <Chart3D 
-                data={featuresData} 
-                title="Features Youth Are Most Interested In"
-              />
-              <Chart3D 
-                data={skillData} 
-                title="Perceived Skill Improvement with SULUH"
-              />
+            {/* Charts Grid - Scrollable Container */}
+            <div className="h-[calc(100vh-200px)] overflow-y-auto">
+              <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 pb-8">
+                <Chart3D 
+                  data={willingnessData} 
+                  title="Willingness to Use SULUH"
+                />
+                <Chart3D 
+                  data={featuresData} 
+                  title="Features Youth Are Most Interested In"
+                />
+                <Chart3D 
+                  data={skillData} 
+                  title="Perceived Skill Improvement with SULUH"
+                />
+              </div>
             </div>
 
             {/* Export Note */}
