@@ -52,7 +52,7 @@ const renderCustomLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent
 
 // Individual Chart Component with 3D Effect
 const Chart3D = ({ data, title }: { data: any[], title: string }) => (
-  <Card className="relative overflow-hidden h-full">
+  <Card className="relative overflow-hidden">
     {/* 3D Shadow Effect */}
     <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/5 pointer-events-none" />
     
@@ -62,12 +62,11 @@ const Chart3D = ({ data, title }: { data: any[], title: string }) => (
       </CardTitle>
     </CardHeader>
     
-    <CardContent className="h-96 relative pb-8">
+    <CardContent className="h-80 relative">
       {/* Base Shadow Ring */}
       <div className="absolute inset-4 rounded-full bg-gradient-to-br from-black/10 to-black/20 transform translate-x-1 translate-y-1" />
       
-      <div className="h-80">
-        <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height="100%">
         <PieChart>
           <Pie
             data={data}
@@ -93,18 +92,17 @@ const Chart3D = ({ data, title }: { data: any[], title: string }) => (
             ))}
           </Pie>
         </PieChart>
-        </ResponsiveContainer>
-      </div>
+      </ResponsiveContainer>
       
       {/* Legend */}
-      <div className="flex flex-wrap justify-center items-center gap-4 mt-6 px-4">
+      <div className="flex flex-wrap justify-center gap-2 mt-4">
         {data.map((entry, index) => (
-          <div key={index} className="flex items-center gap-2">
+          <div key={index} className="flex items-center gap-1">
             <div 
-              className="w-4 h-4 rounded-full shadow-sm" 
+              className="w-3 h-3 rounded-full" 
               style={{ backgroundColor: entry.color }}
             />
-            <span className="text-sm font-medium text-[hsl(var(--navy))] dark:text-foreground tracking-wide">
+            <span className="text-xs text-[hsl(var(--navy))] dark:text-foreground">
               {entry.name}
             </span>
           </div>
@@ -129,8 +127,8 @@ export default function SuluhCharts() {
         </div>
 
         {/* Charts Grid */}
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 auto-rows-fr">
-          <Chart3D
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
+          <Chart3D 
             data={willingnessData} 
             title="Willingness to Use SULUH"
           />
