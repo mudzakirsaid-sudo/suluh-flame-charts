@@ -63,37 +63,40 @@ const Chart3D = ({ data, title }: { data: any[], title: string }) => (
       </CardTitle>
     </CardHeader>
     
-    <CardContent className="h-80 relative pb-8">
-      {/* Base Shadow Ring */}
-      <div className="absolute inset-4 rounded-full bg-gradient-to-br from-black/10 to-black/20 transform translate-x-1 translate-y-1" />
-      
-      <ResponsiveContainer width="100%" height="100%">
-        <PieChart>
-          <Pie
-            data={data}
-            cx="50%"
-            cy="50%"
-            labelLine={false}
-            label={renderCustomLabel}
-            outerRadius={100}
-            innerRadius={0}
-            fill="#8884d8"
-            dataKey="value"
-            stroke="hsl(var(--navy))"
-            strokeWidth={3}
-          >
-            {data.map((entry, index) => (
-              <Cell 
-                key={`cell-${index}`} 
-                fill={entry.color}
-                style={{
-                  filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))',
-                }}
-              />
-            ))}
-          </Pie>
-        </PieChart>
-      </ResponsiveContainer>
+    <CardContent className="relative pb-8">
+      <div className="relative h-72">
+        {/* Base Shadow Ring */}
+        <div className="absolute inset-4 rounded-full bg-gradient-to-br from-black/10 to-black/20 transform translate-x-1 translate-y-1" />
+        
+        <ResponsiveContainer width="100%" height="100%">
+          <PieChart>
+            <Pie
+              data={data}
+              cx="50%"
+              cy="50%"
+              labelLine={false}
+              label={renderCustomLabel}
+              outerRadius={100}
+              innerRadius={0}
+              fill="#8884d8"
+              dataKey="value"
+              stroke="hsl(var(--navy))"
+              strokeWidth={3}
+            >
+              {data.map((entry, index) => (
+                <Cell 
+                  key={`cell-${index}`} 
+                  fill={entry.color}
+                  style={{
+                    filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))',
+                  }}
+                />
+              ))}
+            </Pie>
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
+
       
       {/* Legend */}
       <div className="flex flex-wrap justify-center gap-3 mt-6 px-2">
@@ -130,7 +133,7 @@ export default function SuluhCharts() {
             </div>
 
             {/* Charts Grid - Scrollable Container */}
-            <div className="h-[calc(100vh-200px)] overflow-y-auto">
+            <div className="h-screen overflow-y-auto">
               <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 pb-8">
                 <Chart3D 
                   data={willingnessData} 
