@@ -129,6 +129,14 @@ export default function SuluhCharts() {
               <p className="text-lg text-muted-foreground">
                 Media Literacy Platform Feasibility Analysis
               </p>
+              <div className="mt-4">
+                <a 
+                  href="/gtm" 
+                  className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#FF9933] to-[#FF6600] text-white font-semibold rounded-lg hover:from-[#FF6600] hover:to-[#FF9933] transition-all duration-300 shadow-lg"
+                >
+                  View Go-to-Market Strategy →
+                </a>
+              </div>
             </div>
 
             {/* Charts Grid - Scrollable Container */}
