@@ -53,18 +53,18 @@ const renderCustomLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent
 
 // Individual Chart Component with 3D Effect
 const Chart3D = ({ data, title }: { data: any[], title: string }) => (
-  <Card className="relative overflow-hidden">
+  <Card className="relative overflow-hidden h-[420px] flex flex-col">
     {/* 3D Shadow Effect */}
     <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/5 pointer-events-none" />
     
-    <CardHeader className="text-center pb-2">
-      <CardTitle className="text-xl font-bold text-[hsl(var(--navy))] dark:text-foreground">
+    <CardHeader className="text-center pb-4 flex-shrink-0">
+      <CardTitle className="text-xl font-bold text-[hsl(var(--navy))] dark:text-foreground min-h-[2.5rem] flex items-center justify-center">
         {title}
       </CardTitle>
     </CardHeader>
     
-    <CardContent className="relative pb-8">
-      <div className="relative h-72">
+    <CardContent className="relative flex-1 flex flex-col justify-between pb-6">
+      <div className="relative h-64 flex-shrink-0">
         {/* Base Shadow Ring */}
         <div className="absolute inset-4 rounded-full bg-gradient-to-br from-black/10 to-black/20 transform translate-x-1 translate-y-1" />
         
@@ -76,7 +76,7 @@ const Chart3D = ({ data, title }: { data: any[], title: string }) => (
               cy="50%"
               labelLine={false}
               label={renderCustomLabel}
-              outerRadius={100}
+              outerRadius={85}
               innerRadius={0}
               fill="#8884d8"
               dataKey="value"
@@ -97,16 +97,15 @@ const Chart3D = ({ data, title }: { data: any[], title: string }) => (
         </ResponsiveContainer>
       </div>
 
-      
       {/* Legend */}
-      <div className="flex flex-wrap justify-center gap-3 mt-6 px-2">
+      <div className="flex flex-wrap justify-center gap-3 mt-4 px-2 min-h-[4rem] items-center">
         {data.map((entry, index) => (
           <div key={index} className="flex items-center gap-2">
             <div 
-              className="w-3 h-3 rounded-full" 
+              className="w-3 h-3 rounded-full flex-shrink-0" 
               style={{ backgroundColor: entry.color }}
             />
-            <span className="text-sm font-medium text-[hsl(var(--navy))] dark:text-foreground">
+            <span className="text-sm font-medium text-[hsl(var(--navy))] dark:text-foreground whitespace-nowrap">
               {entry.name}
             </span>
           </div>
