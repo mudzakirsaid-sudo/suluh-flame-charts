@@ -53,57 +53,59 @@ const renderCustomLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent
 
 // Individual Chart Component with 3D Effect
 const Chart3D = ({ data, title }: { data: any[], title: string }) => (
-  <Card className="relative overflow-hidden">
+  <Card className="relative overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 p-6">
     {/* 3D Shadow Effect */}
     <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/5 pointer-events-none" />
     
-    <CardHeader className="text-center pb-2">
+    <CardHeader className="text-center pb-4">
       <CardTitle className="text-xl font-bold text-[hsl(var(--navy))] dark:text-foreground">
         {title}
       </CardTitle>
     </CardHeader>
     
-    <CardContent className="h-80 relative">
+    <CardContent className="h-96 relative">
       {/* Base Shadow Ring */}
       <div className="absolute inset-4 rounded-full bg-gradient-to-br from-black/10 to-black/20 transform translate-x-1 translate-y-1" />
       
-      <ResponsiveContainer width="100%" height="100%">
-        <PieChart>
-          <Pie
-            data={data}
-            cx="50%"
-            cy="50%"
-            labelLine={false}
-            label={renderCustomLabel}
-            outerRadius={120}
-            innerRadius={0}
-            fill="#8884d8"
-            dataKey="value"
-            stroke="hsl(var(--navy))"
-            strokeWidth={3}
-          >
-            {data.map((entry, index) => (
-              <Cell 
-                key={`cell-${index}`} 
-                fill={entry.color}
-                style={{
-                  filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))',
-                }}
-              />
-            ))}
-          </Pie>
-        </PieChart>
-      </ResponsiveContainer>
+      <div className="h-80">
+        <ResponsiveContainer width="100%" height="100%">
+          <PieChart>
+            <Pie
+              data={data}
+              cx="50%"
+              cy="50%"
+              labelLine={false}
+              label={renderCustomLabel}
+              outerRadius={110}
+              innerRadius={0}
+              fill="#8884d8"
+              dataKey="value"
+              stroke="hsl(var(--navy))"
+              strokeWidth={3}
+            >
+              {data.map((entry, index) => (
+                <Cell 
+                  key={`cell-${index}`} 
+                  fill={entry.color}
+                  style={{
+                    filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))',
+                  }}
+                />
+              ))}
+            </Pie>
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
       
-      {/* Legend */}
-      <div className="flex flex-wrap justify-center gap-2 mt-4">
+      {/* Legend with proper spacing */}
+      <div className="flex flex-wrap justify-center gap-3 mt-6 px-4">
         {data.map((entry, index) => (
-          <div key={index} className="flex items-center gap-1">
+          <div key={index} className="flex items-center gap-2">
             <div 
-              className="w-3 h-3 rounded-full" 
+              className="w-4 h-4 rounded-full shadow-sm" 
               style={{ backgroundColor: entry.color }}
             />
-            <span className="text-xs text-[hsl(var(--navy))] dark:text-foreground">
+            <span className="text-sm font-medium text-[hsl(var(--navy))] dark:text-foreground">
               {entry.name}
             </span>
           </div>
@@ -116,19 +118,20 @@ const Chart3D = ({ data, title }: { data: any[], title: string }) => (
 export default function SuluhCharts() {
   return (
     <div className="h-screen bg-gradient-to-br from-background via-primary/5 to-accent/10">
-      <ScrollArea className="h-full">
-        <div className="p-6">
-          <div className="max-w-7xl mx-auto">
-            {/* Header */}
-            <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold text-[hsl(var(--navy))] dark:text-foreground mb-4">
-                SULUH Analytics Dashboard
-              </h1>
-              <p className="text-lg text-muted-foreground">
-                Media Literacy Platform Feasibility Analysis
-              </p>
-            </div>
+      {/* Header - Fixed at top */}
+      <div className="text-center py-8 px-6 border-b border-border/20">
+        <h1 className="text-4xl font-bold text-[hsl(var(--navy))] dark:text-foreground mb-4">
+          SULUH Analytics Dashboard
+        </h1>
+        <p className="text-lg text-muted-foreground">
+          Media Literacy Platform Feasibility Analysis
+        </p>
+      </div>
 
+      {/* Scrollable Charts Container */}
+      <div className="overflow-y-auto" style={{ height: 'calc(100vh - 200px)' }}>
+        <div className="p-8">
+          <div className="max-w-7xl mx-auto space-y-8">
             {/* Charts Grid */}
             <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
               <Chart3D 
@@ -146,14 +149,14 @@ export default function SuluhCharts() {
             </div>
 
             {/* Export Note */}
-            <div className="mt-12 text-center pb-6">
+            <div className="text-center py-8">
               <p className="text-sm text-muted-foreground">
                 Interactive 3D-style charts with SULUH brand colors • Flame gradient & Navy theme
               </p>
             </div>
           </div>
         </div>
-      </ScrollArea>
+      </div>
     </div>
   );
 }
