@@ -52,7 +52,7 @@ const renderCustomLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent
 
 // Individual Chart Component with 3D Effect
 const Chart3D = ({ data, title }: { data: any[], title: string }) => (
-  <Card className="relative overflow-hidden">
+  <Card className="relative overflow-hidden h-full">
     {/* 3D Shadow Effect */}
     <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/5 pointer-events-none" />
     
@@ -62,11 +62,12 @@ const Chart3D = ({ data, title }: { data: any[], title: string }) => (
       </CardTitle>
     </CardHeader>
     
-    <CardContent className="h-80 relative">
+    <CardContent className="h-96 relative pb-8">
       {/* Base Shadow Ring */}
       <div className="absolute inset-4 rounded-full bg-gradient-to-br from-black/10 to-black/20 transform translate-x-1 translate-y-1" />
       
-      <ResponsiveContainer width="100%" height="100%">
+      <div className="h-80">
+        <ResponsiveContainer width="100%" height="100%">
         <PieChart>
           <Pie
             data={data}
@@ -92,7 +93,8 @@ const Chart3D = ({ data, title }: { data: any[], title: string }) => (
             ))}
           </Pie>
         </PieChart>
-      </ResponsiveContainer>
+        </ResponsiveContainer>
+      </div>
       
       {/* Legend */}
       <div className="flex flex-wrap justify-center gap-2 mt-4">
@@ -127,8 +129,8 @@ export default function SuluhCharts() {
         </div>
 
         {/* Charts Grid */}
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
-          <Chart3D 
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 auto-rows-fr">
+          <Chart3D
             data={willingnessData} 
             title="Willingness to Use SULUH"
           />
