@@ -63,7 +63,7 @@ const Chart3D = ({ data, title }: { data: any[], title: string }) => (
       </CardTitle>
     </CardHeader>
     
-    <CardContent className="h-80 relative">
+    <CardContent className="h-80 relative pb-8">
       {/* Base Shadow Ring */}
       <div className="absolute inset-4 rounded-full bg-gradient-to-br from-black/10 to-black/20 transform translate-x-1 translate-y-1" />
       
@@ -75,7 +75,7 @@ const Chart3D = ({ data, title }: { data: any[], title: string }) => (
             cy="50%"
             labelLine={false}
             label={renderCustomLabel}
-            outerRadius={120}
+            outerRadius={100}
             innerRadius={0}
             fill="#8884d8"
             dataKey="value"
@@ -96,14 +96,14 @@ const Chart3D = ({ data, title }: { data: any[], title: string }) => (
       </ResponsiveContainer>
       
       {/* Legend */}
-      <div className="flex flex-wrap justify-center gap-2 mt-4">
+      <div className="flex flex-wrap justify-center gap-3 mt-6 px-2">
         {data.map((entry, index) => (
-          <div key={index} className="flex items-center gap-1">
+          <div key={index} className="flex items-center gap-2">
             <div 
               className="w-3 h-3 rounded-full" 
               style={{ backgroundColor: entry.color }}
             />
-            <span className="text-xs text-[hsl(var(--navy))] dark:text-foreground">
+            <span className="text-sm font-medium text-[hsl(var(--navy))] dark:text-foreground">
               {entry.name}
             </span>
           </div>
