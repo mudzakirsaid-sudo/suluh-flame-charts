@@ -1,5 +1,6 @@
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { ScrollArea } from './ui/scroll-area';
 
 // SULUH Brand Colors - Flame Gradient
 const FLAME_COLORS = [
@@ -114,41 +115,45 @@ const Chart3D = ({ data, title }: { data: any[], title: string }) => (
 
 export default function SuluhCharts() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/10 p-6">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-[hsl(var(--navy))] dark:text-foreground mb-4">
-            SULUH Analytics Dashboard
-          </h1>
-          <p className="text-lg text-muted-foreground">
-            Media Literacy Platform Feasibility Analysis
-          </p>
-        </div>
+    <div className="h-screen bg-gradient-to-br from-background via-primary/5 to-accent/10">
+      <ScrollArea className="h-full">
+        <div className="p-6">
+          <div className="max-w-7xl mx-auto">
+            {/* Header */}
+            <div className="text-center mb-12">
+              <h1 className="text-4xl font-bold text-[hsl(var(--navy))] dark:text-foreground mb-4">
+                SULUH Analytics Dashboard
+              </h1>
+              <p className="text-lg text-muted-foreground">
+                Media Literacy Platform Feasibility Analysis
+              </p>
+            </div>
 
-        {/* Charts Grid */}
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
-          <Chart3D 
-            data={willingnessData} 
-            title="Willingness to Use SULUH"
-          />
-          <Chart3D 
-            data={featuresData} 
-            title="Features Youth Are Most Interested In"
-          />
-          <Chart3D 
-            data={skillData} 
-            title="Perceived Skill Improvement with SULUH"
-          />
-        </div>
+            {/* Charts Grid */}
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
+              <Chart3D 
+                data={willingnessData} 
+                title="Willingness to Use SULUH"
+              />
+              <Chart3D 
+                data={featuresData} 
+                title="Features Youth Are Most Interested In"
+              />
+              <Chart3D 
+                data={skillData} 
+                title="Perceived Skill Improvement with SULUH"
+              />
+            </div>
 
-        {/* Export Note */}
-        <div className="mt-12 text-center">
-          <p className="text-sm text-muted-foreground">
-            Interactive 3D-style charts with SULUH brand colors • Flame gradient & Navy theme
-          </p>
+            {/* Export Note */}
+            <div className="mt-12 text-center pb-6">
+              <p className="text-sm text-muted-foreground">
+                Interactive 3D-style charts with SULUH brand colors • Flame gradient & Navy theme
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
+      </ScrollArea>
     </div>
   );
 }
