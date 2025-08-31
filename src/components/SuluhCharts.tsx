@@ -97,14 +97,14 @@ const Chart3D = ({ data, title }: { data: any[], title: string }) => (
       </div>
       
       {/* Legend */}
-      <div className="flex flex-wrap justify-center gap-2 mt-4">
+      <div className="flex flex-wrap justify-center items-center gap-4 mt-6 px-4">
         {data.map((entry, index) => (
-          <div key={index} className="flex items-center gap-1">
+          <div key={index} className="flex items-center gap-2">
             <div 
-              className="w-3 h-3 rounded-full" 
+              className="w-4 h-4 rounded-full shadow-sm" 
               style={{ backgroundColor: entry.color }}
             />
-            <span className="text-xs text-[hsl(var(--navy))] dark:text-foreground">
+            <span className="text-sm font-medium text-[hsl(var(--navy))] dark:text-foreground tracking-wide">
               {entry.name}
             </span>
           </div>
