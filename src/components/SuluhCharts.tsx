@@ -1,6 +1,6 @@
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { ScrollArea } from './ui/scroll-area';
+
 
 // SULUH Brand Colors - Flame Gradient
 const FLAME_COLORS = [
@@ -115,8 +115,8 @@ const Chart3D = ({ data, title }: { data: any[], title: string }) => (
 
 export default function SuluhCharts() {
   return (
-    <div className="h-screen bg-gradient-to-br from-background via-primary/5 to-accent/10">
-      <ScrollArea className="h-full">
+    <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/10">
+      
         <div className="p-6">
           <div className="max-w-7xl mx-auto">
             {/* Header */}
@@ -155,7 +155,7 @@ export default function SuluhCharts() {
             </div>
           </div>
         </div>
-      </ScrollArea>
+      
     </div>
   );
 }
